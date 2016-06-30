@@ -1,0 +1,16 @@
+# -*- coding=utf-8 -*-
+# 删除文件某一行
+# 文本清洗，过滤掉每行前后的空白字符和空行
+# 可以删除\r 回车符和 \n 换行符
+# 删除含有指定字符文本的行
+import shutil
+with open('123.txt', 'r',encoding= 'utf-8') as f:
+    with open('aftercleaning1.txt', 'a',encoding= 'utf-8') as g:
+        for line in f.readlines():
+            line1 = line.strip()
+            if not line1:
+                continue
+            line2 = line1.replace('\r', '')
+            if 'さん、さま、様、、どの、殿' not in line2 and '111' not in line2:
+                g.write(line2 + '\n')
+shutil.move('aftercleaning1.txt', '123.txt')
